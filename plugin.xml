@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+	xmlns:android="http://schemas.android.com/apk/res/android" id="com.alignace.cordova.plugin.card.reader"
+	version="1.0.0">
+
+	<name>CardRaderPlugin</name>
+	<description>Cordova plugin for 3.5mm Headphone Jack Mini Magnetic Mobile Card Reader</description>
+	<keywords>Magnetic Mobile Card Reader, credit card</keywords>
+	<author>Ayajahmed Shaikh</author>
+	<license>MIT</license>
+
+	<engines>
+		<engine name="cordova" version=">=3.0.0" />
+	</engines>
+
+	<js-module src="www/CardRaderPlugin.js" name="CardRaderPlugin">
+		<clobbers target="CardRaderPlugin" />
+	</js-module>
+
+	<platform name="android">
+
+		<lib-file src="src/android/libs/square.jar" arch="device" />
+
+		<source-file
+			src="src/android/src/com/alignace/cordova/plugin/card/reader/CardRaderPlugin.java"
+			target-dir="src/com/alignace/cordova/plugin/card/reader" />
+
+		<config-file target="res/xml/config.xml" parent="/*">
+			<feature name="CardRaderPlugin">
+				<param name="android-package" value="com.alignace.cordova.plugin.card.reader.CardIOPlugin" />
+			</feature>
+		</config-file>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest/application">
+			    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+		</config-file>
+
+	</platform>
+
+</plugin>
