@@ -32,7 +32,7 @@
 		<config-file target="res/xml/config.xml" parent="/*">
 			<feature name="CardRaderPlugin">
 				<param name="android-package"
-					value="com.alignace.cordova.plugin.card.reader.CardIOPlugin" />
+					value="com.alignace.cordova.plugin.card.reader.CardRaderPlugin" />
 			</feature>
 		</config-file>
 
