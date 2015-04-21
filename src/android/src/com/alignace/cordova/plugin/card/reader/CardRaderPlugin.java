@@ -2,18 +2,13 @@ package com.alignace.cordova.plugin.card.reader;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
-import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.square.CardResult;
+import android.util.Log;
+
 import com.square.MagRead;
 import com.square.MagReadListener;
-
-import android.content.Intent;
-import android.os.Message;
-import android.util.Log;
 
 public class CardRaderPlugin extends CordovaPlugin {
 
@@ -28,7 +23,7 @@ public class CardRaderPlugin extends CordovaPlugin {
 
 	@Override
 	public boolean execute(String action, JSONArray data,
-			CallbackContext callbackContext) {
+			final CallbackContext callbackContext) {
 		boolean result = true;
 		this.callbackContext = callbackContext;
 
@@ -50,19 +45,25 @@ public class CardRaderPlugin extends CordovaPlugin {
 						mCreditcardNumber.put(j);
 						callbackContext.success(mCreditcardNumber);
 					} catch (Exception e) {
-						Log.e(TAG, "Error reading Card: " + (e.getMessage());
+						Log.e(TAG, "Error reading Card: " + e.getMessage());
 						callbackContext.error(e.getMessage());
 					}
 				}
+
+				@Override
+				public void updateBits(String arg0) {
+					// TODO Auto-generated method stub
+
+				}
 			});
 			read.start();
-		}else if (STOP.equals(action)) {
-			if (read != null){
+		} else if (STOP.equals(action)) {
+			if (read != null) {
 				read.stop();
 			}
-			
-			callbackContext.succes();
-		}else{
+
+			callbackContext.success();
+		} else {
 			result = false;
 		}
 
