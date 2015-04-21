@@ -10,7 +10,7 @@ var CardRaderPlugin = function() {
 
 };
 
-CardIOPlugin.prototype.start = function(successCallback, errorCallback) {
+CardRaderPlugin.prototype.start = function(successCallback, errorCallback) {
 
     if (errorCallback == null) { errorCallback = function() {}}
 
@@ -26,7 +26,7 @@ CardIOPlugin.prototype.start = function(successCallback, errorCallback) {
     cordova.exec(successCallback, errorCallback, "CardRaderPlugin", "start", []);
 };
 
-CardIOPlugin.prototype.stop = function(successCallback, errorCallback) {
+CardRaderPlugin.prototype.stop = function(successCallback, errorCallback) {
 
     if (errorCallback == null) { errorCallback = function() {}}
 
