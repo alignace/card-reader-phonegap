@@ -6,9 +6,6 @@
  * @Since 21 April, 2015
  */
 
-// Response array contain these fields
-// redacted_card_number, card_number, expiry_month,expiry_year, cvv, zip
-
 var CardRaderPlugin = function() {
 
 };
