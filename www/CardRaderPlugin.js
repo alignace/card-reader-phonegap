@@ -1,4 +1,4 @@
-/**
+cordova.define("com.alignace.cordova.plugin.card.reader.CardRaderPlugin", function(require, exports, module) { /**
  * CardRaderPlugin.js
  * Cordova plugin for 3.5mm Headphone Jack Mini Magnetic Mobile Card Reader
  * @Copyright 2015 Alignace LLC. http://www.alignace.com
@@ -56,3 +56,4 @@ if (typeof module != 'undefined' && module.exports) {
 
 
 //EOF
+});
