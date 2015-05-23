@@ -5,7 +5,8 @@
 
 	<name>CardRaderPlugin</name>
 	<description>Cordova plugin for 3.5mm Headphone Jack Mini Magnetic
-		Mobile Card Reader</description>
+		Mobile Card Reader
+	</description>
 	<keywords>Magnetic Mobile Card Reader, credit card</keywords>
 	<author>Ayajahmed Shaikh</author>
 	<license>MIT</license>
@@ -40,6 +41,20 @@
 			<uses-permission android:name="android.permission.RECORD_AUDIO" />
 		</config-file>
 
+	</platform>
+
+	<platform name="ios">
+	    <framework src="libs/libiMagRead.a" />
+	    
+	    <config-file target="config.xml" parent="/*">
+            <feature name="CardRaderPlugin">
+                <param name="ios-package" value="CardRaderPlugin"/>
+            </feature>
+        </config-file>
+        
+        <header-file src="src/ios/CardRaderPlugin.h" />
+        <header-file src="src/ios/iMagRead.h" />
+        <header-file src="src/ios/CardRaderPlugin.m" />
 	</platform>
 
 </plugin>

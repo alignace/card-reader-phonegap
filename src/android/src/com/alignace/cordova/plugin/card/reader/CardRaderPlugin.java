@@ -37,13 +37,18 @@ public class CardRaderPlugin extends CordovaPlugin {
 				@Override
 				public void updateBytes(String bytes) {
 					try {
+						Log.v(TAG, "UpdateBytes received" + bytes);
 						CardResult scanResult = getCardDetails(bytes);
-						JSONObject j = new JSONObject();
-						j.put("card_number", scanResult.getCardNumber());
-						j.put("expiry_month", scanResult.getExpiryMonth());
-						j.put("expiry_year", scanResult.getExpiryYear());
-						mCreditcardNumber.put(j);
-						callbackContext.success(mCreditcardNumber);
+						if (scanResult != null) {
+							JSONObject j = new JSONObject();
+							j.put("card_number", scanResult.getCardNumber());
+							j.put("expiry_month", scanResult.getExpiryMonth());
+							j.put("expiry_year", scanResult.getExpiryYear());
+							mCreditcardNumber.put(j);
+							callbackContext.success(mCreditcardNumber);
+						}else{
+							Log.e(TAG, "Error reading Card");
+						}
 					} catch (Exception e) {
 						Log.e(TAG, "Error reading Card: " + e.getMessage());
 						callbackContext.error(e.getMessage());
@@ -51,8 +56,8 @@ public class CardRaderPlugin extends CordovaPlugin {
 				}
 
 				@Override
-				public void updateBits(String arg0) {
-					// TODO Auto-generated method stub
+				public void updateBits(String bits) {
+					Log.v(TAG, "UpdateBits received" + bits);
 
 				}
 			});
@@ -72,7 +77,7 @@ public class CardRaderPlugin extends CordovaPlugin {
 	}
 
 	private CardResult getCardDetails(String bytes) {
-		CardResult result = new CardResult();
+		CardResult result = null;
 		try {
 			StringBuffer cardNumber = new StringBuffer();
 			int i = 0;
